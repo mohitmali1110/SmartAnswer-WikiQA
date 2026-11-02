@@ -239,6 +239,76 @@ A production system could extend this architecture with semantic embeddings, vec
 
 ---
 
+🏭 Potential Enterprise Application
+
+The current project is trained and evaluated on the WikiQA benchmark dataset. It is therefore a prototype of an answer-sentence ranking system, not a production system trained on Secure Meters data.
+
+The same retrieval and ranking concept could be adapted to an industrial knowledge environment.
+
+Example Use Case
+
+An engineer or support employee could enter a question such as:
+
+«"What should I check if a smart meter is not communicating?"»
+
+The system could:
+
+User Question
+      ↓
+Retrieve relevant technical documents
+      ↓
+Rank candidate sentences/passages
+      ↓
+Select the most relevant evidence
+      ↓
+Return the supporting information
+
+Potential knowledge sources could include:
+
+- Product manuals
+- Installation guides
+- Troubleshooting documents
+- Technical FAQs
+- Internal engineering documentation
+- Customer-support knowledge bases
+
+How This Could Evolve into a GenAI System
+
+The current project mainly demonstrates the retrieval/ranking layer.
+
+A production-oriented architecture could extend it to:
+
+User Question
+      ↓
+Hybrid Retrieval
+(BM25 + Semantic Search)
+      ↓
+Top-K Candidate Passages
+      ↓
+Reranking Model
+      ↓
+Confidence / Answerability Check
+      ↓
+LLM
+      ↓
+Grounded Answer + Source Citation
+
+This approach can help reduce unsupported answers because the language model receives retrieved evidence rather than relying only on its internal knowledge.
+
+Potential Business Benefits
+
+A system built around this approach could potentially help:
+
+- Reduce the time required to locate technical information
+- Help engineers find troubleshooting information faster
+- Improve customer-support response time
+- Reduce repetitive information-search tasks
+- Make large internal documentation collections easier to search
+
+These benefits would need to be validated using real organizational data and business metrics.
+
+---
+
 🚀 Future Improvements
 
 Possible improvements include:
