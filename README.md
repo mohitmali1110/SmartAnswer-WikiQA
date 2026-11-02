@@ -61,6 +61,77 @@ The train/dev/test split is performed at the question level to reduce the risk o
 
 ---
 
+🏗️ Project Architecture
+
+                  ┌─────────────────────┐
+                  │     WikiQA Dataset  │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Data Preprocessing   │
+                  │ & Cleaning           │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Question-Level      │
+                  │ Train/Dev/Test Split│
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Feature Engineering │
+                  │                     │
+                  │ TF-IDF              │
+                  │ BM25                │
+                  │ Jaccard             │
+                  │ Word Overlap        │
+                  │ Entity Overlap      │
+                  │ Length Features     │
+                  │ Question Type       │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+              ┌──────────────────────────────┐
+              │     ML Ranking Models       │
+              │                              │
+              │ Logistic Regression         │
+              │ Random Forest               │
+              │ Gradient Boosting           │
+              │ SVM                         │
+              │ MLP                         │
+              └──────────────┬───────────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Siamese LSTM        │
+                  │ Comparison          │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Ranking Evaluation  │
+                  │                     │
+                  │ MAP                 │
+                  │ MRR                 │
+                  │ Precision@1         │
+                  └─────────────────────┘
+
+🔄 End-to-End Workflow
+
+1. Load and clean the WikiQA dataset.
+2. Remove duplicate question-sentence pairs.
+3. Split data at the question level to reduce data leakage.
+4. Generate lexical and statistical features.
+5. Train multiple classical ML models.
+6. Train a Siamese LSTM for comparison.
+7. Rank candidate sentences for each question.
+8. Evaluate ranking quality using MAP, MRR and Precision@1.
+9. Compare the performance of all evaluated models.
+
+---
+
 ⚙️ Feature Engineering
 
 The classical ML models use 16 engineered features, including:
